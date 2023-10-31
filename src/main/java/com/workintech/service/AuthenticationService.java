@@ -4,12 +4,16 @@ package com.workintech.service;
 
 import com.workintech.dao.UserRepository;
 import com.workintech.dao.RoleRepository;
+import com.workintech.dto.LoginResponse;
 import com.workintech.entity.Role;
 import com.workintech.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,12 +42,32 @@ public class AuthenticationService {
 
     }
 
-    public User register(String email, String password, String username, String firstName, String lastName, Date birthOfDate) {
+    public User register(String email, String password, String username, Date birthOfDate) {
+        //password  encode et
         String encodedPassword = passwordEncoder.encode(password);
-       Role memberrole = roleRepository.findByAuthority("USER").get();
-        Set<Role> roles = new HashSet<>();
-        roles.add(memberrole);
-        return null;
+        //user'a role tanımla
+        Role userRole = roleRepository.findByAuthority("USER").get();
+        Set<Role> authorities = new HashSet<>();
+        authorities.add(userRole);
+
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setUserName(username);
+        user.setBirthOfDate(user.getBirthOfDate());
+        return memberRepository.save(user);
+    }
+
+    public LoginResponse login(String email, String password) {
+        try {
+            Authentication auth = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(email, password));
+            String token = tokenService.generateJwtToken(auth);
+            return new LoginResponse(memberRepository.findMemberByEmail(email).get(), token);
+        } catch (AuthenticationException ex) {
+            return new LoginResponse(null, "");
+        }
+
     }
 }
 

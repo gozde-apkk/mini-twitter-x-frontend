@@ -1,17 +1,21 @@
 package com.workintech.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users", schema = "public")
 public class User implements UserDetails {
@@ -30,8 +34,11 @@ public class User implements UserDetails {
     private String password;
 
 
+    private LocalDateTime timestamp;
+
+
     @Column(name = "birth_date")
-    private Date birthOfDate;
+    private String birthOfDate;
 
 
     @ManyToMany(fetch = FetchType.EAGER)

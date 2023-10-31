@@ -83,27 +83,20 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.authorizeHttpRequests(auth -> {
-            auth.requestMatchers("/auth/**").permitAll();
-            auth.requestMatchers(HttpMethod.GET, "/tweet/**").hasAnyRole("USER", "ADMIN");
-            auth.requestMatchers(HttpMethod.POST, "/tweet/**").hasAnyRole("USER", "ADMIN");
-            auth.requestMatchers(HttpMethod.PUT, "/tweet/**").hasAnyRole("USER", "ADMIN");
-            auth.requestMatchers(HttpMethod.DELETE, "/tweet/**").hasAnyRole("USER", "ADMIN");
-            auth.anyRequest().authenticated();
-        }).oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        http.cors().configurationSource(corsConfigurationSource())
-                .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .deleteCookies("JSESSIONID");
-        return http.build();
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        return http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/auth/**").permitAll();
+                    auth.requestMatchers(HttpMethod.GET, "/tweet/**").hasAnyRole("USER", "ADMIN");
+                    auth.requestMatchers(HttpMethod.POST, "/tweet/**").hasAnyRole("USER", "ADMIN");
+                    auth.requestMatchers(HttpMethod.PUT, "/tweet/**").hasAnyRole("USER", "ADMIN");
+                    auth.requestMatchers(HttpMethod.DELETE, "/tweet/**").hasAnyRole("USER", "ADMIN");
+                    auth.anyRequest().authenticated();
+                })
+                //.httpBasic(Customizer.withDefaults())
+                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)//token ile login olacağımızı belirttik
+                .build();
     }
-
 
     private CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
