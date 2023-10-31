@@ -4,24 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c12ed90-4dd2-42f7-beae-db86e2e03e2a" name="Changes" comment="">
+    <list default="true" id="4c12ed90-4dd2-42f7-beae-db86e2e03e2a" name="Changes" comment="file-changes">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/TwitterApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/config/SecurityConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/dao/MemberRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/dao/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/dao/UserRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/dto/LoginRequest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/dto/LoginResponse.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/dto/RegistrationMember.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/entity/Comment.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/entity/Like.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/entity/Retweet.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/entity/Role.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/entity/Tweet.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/entity/User.java" afterDir="false" />
@@ -34,6 +32,7 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/workintech/utils/RsaKeyProperties.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/com/workintech/TwitterApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +139,20 @@
       <option name="presentableId" value="Default" />
       <updated>1694716883530</updated>
     </task>
+    <task id="LOCAL-00001" summary="file-changes">
+      <option name="closed" value="true" />
+      <created>1698745422988</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698745422988</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="file-changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="file-changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/mini_twitter_x_frontend$TwitterBackendApplicationsApplication.ic" NAME="TwitterBackendApplicationsApplication Coverage Results" MODIFIED="1695045767104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
